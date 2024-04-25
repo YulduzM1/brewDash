@@ -1,3 +1,4 @@
+import 'package:brew_dash_app/pages/my_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,9 +13,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
-        centerTitle: true,
-      ),
+        title: Text("Home")),
+        drawer: MyDrawer(),
       // Other properties and widgets for your home page can be added here
     );
   }
