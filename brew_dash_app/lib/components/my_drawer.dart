@@ -1,8 +1,9 @@
 import 'package:brew_dash_app/components/my_drawer_tile.dart';
 import 'package:flutter/material.dart';
+import '../pages/settings_page.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class MyDrawer extends StatelessWidget {
           ),
 
 
-          // Settings list tile
+          //Settings list tile
           MyDrawerTile(
             text: "S  E T T I N G S",
             icon: Icons.settings, 

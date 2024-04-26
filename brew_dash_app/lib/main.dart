@@ -1,6 +1,5 @@
 import 'package:brew_dash_app/auth/login_or_register.dart';
 import 'package:flutter/material.dart';
-import 'pages/login_page.dart';
 import 'package:brew_dash_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 void main() {
