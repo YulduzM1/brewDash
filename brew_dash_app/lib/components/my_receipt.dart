@@ -1,5 +1,7 @@
+import "package:brew_dash_app/models/restaurant.dart";
 import "package:flutter/material.dart";
 import "package:flutter/widgets.dart";
+import "package:provider/provider.dart";
 
 class MyReceipt extends StatelessWidget {
   const MyReceipt({super.key});
@@ -21,8 +23,13 @@ class MyReceipt extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8)
               ),
               padding: const EdgeInsets.all(25),
-              child: Text("Receipt Here"),
+              child: Consumer<Restaurant>(
+                builder: (context, restaurant, child) =>
+                  Text(restaurant.displayCartReceipt()),
+              ),
             ),
+            const SizedBox(height: 25),
+            const Text("Estimated Delivery Time is 4:10PM")
           ],
         ),
       ),
