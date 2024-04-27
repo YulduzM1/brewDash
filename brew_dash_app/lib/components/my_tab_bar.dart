@@ -1,3 +1,5 @@
+import 'package:brew_dash_app/models/food.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class MyTabBar extends StatelessWidget {
@@ -9,25 +11,19 @@ class MyTabBar extends StatelessWidget {
     required this.tabController,
   });
   
+  List<Tab> _buildCategoryTabs() {
+    return FoodCategory.values.map((category) {
+      return Tab(
+        text: category.toString().split('.').last,
+      );
+    }).toList();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
       child: TabBar(
         controller: tabController,
-        tabs: [
-          Tab(
-            icon: Icon(Icons.home),
-          ), 
-
-          //2md Tab
-          Tab(
-            icon: Icon(Icons.settings),
-          ),
-                    //2md Tab
-          Tab(
-            icon: Icon(Icons.person),
-          ),
-        ],
+        tabs: _buildCategoryTabs(),
       ),
     );
   }

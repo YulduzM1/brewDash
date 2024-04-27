@@ -1,6 +1,7 @@
 import 'package:brew_dash_app/models/food.dart';
+import 'package:flutter/foundation.dart';
 
-class Restaurant {
+class Restaurant extends ChangeNotifier {
   //list  of the food menu
   final List<Food> _menu = [
     //// Coffees ///////////////////////////////////////////
@@ -15,7 +16,6 @@ class Restaurant {
         Addon(name: "Chocolate Powder", price: 0.50),
       ]
     ),
-
     Food(
       name: "Latte",
       description: "Smooth espresso with steamed milk",
@@ -27,7 +27,6 @@ class Restaurant {
         Addon(name: "Caramel Drizzle", price: 0.50),
       ]
     ),
-
     Food(
       name: "Mocha",
       description: "Espresso mixed with chocolate and steamed milk",
@@ -39,7 +38,6 @@ class Restaurant {
         Addon(name: "Chocolate Syrup", price: 0.75),
       ]
     ),
-
     Food(
       name: "Americano",
       description: "Diluted espresso with hot water",
@@ -51,7 +49,6 @@ class Restaurant {
         Addon(name: "Flavored Syrup", price: 0.75),
       ]
     ),
-
     Food(
       name: "Macchiato",
       description: "Espresso 'marked' with a dash of steamed milk",
@@ -63,7 +60,6 @@ class Restaurant {
         Addon(name: "Vanilla Syrup", price: 0.75),
       ]
     ),
-
 
 /////////////////// Teas ///////////////////////////////////////////
     Food(
@@ -77,7 +73,6 @@ class Restaurant {
         Addon(name: "Cinnamon Stick", price: 0.50),
       ]
     ),
-
     Food(
       name: "Earl Grey Tea",
       description: "Flavored black tea infused with bergamot oil",
@@ -89,7 +84,6 @@ class Restaurant {
         Addon(name: "Lemon Zest", price: 0.75),
       ]
     ),
-
     Food(
       name: "Peppermint Tea",
       description: "Refreshing herbal tea made from peppermint leaves",
@@ -101,7 +95,6 @@ class Restaurant {
         Addon(name: "Fresh Mint Leaves", price: 0.50),
       ]
     ),
-
     Food(
       name: "Jasmine Tea",
       description: "Fragrant green tea infused with jasmine blossoms",
@@ -113,7 +106,6 @@ class Restaurant {
         Addon(name: "Orange Slice", price: 0.50),
       ]
     ),
-
     Food(
       name: "Rooibos Tea",
       description: "Red herbal tea with a naturally sweet flavor",
@@ -125,7 +117,6 @@ class Restaurant {
         Addon(name: "Caramel Drizzle", price: 0.50),
       ]
     ),
-
 
 ////////////////////////////// Smoothies///////////////////////////////////////////
     Food(
@@ -139,7 +130,6 @@ class Restaurant {
         Addon(name: "Passion Fruit Syrup", price: 0.50),
       ]
     ),
-
     Food(
       name: "Green Goddess Smoothie",
       description: "Healthy mix of spinach, kale, and banana",
@@ -151,7 +141,6 @@ class Restaurant {
         Addon(name: "Greek Yogurt", price: 0.75),
       ]
     ),
-
     Food(
       name: "Peach Paradise Smoothie",
       description: "Smooth blend of ripe peaches and creamy yogurt",
@@ -163,7 +152,6 @@ class Restaurant {
         Addon(name: "Granola", price: 0.50),
       ]
     ),
-
     Food(
       name: "Berry Burst Smoothie",
       description: "Refreshing mix of strawberries, blueberries, and raspberries",
@@ -175,7 +163,6 @@ class Restaurant {
         Addon(name: "Acai Powder", price: 0.50),
       ]
     ),
-
     Food(
       name: "Tropical Sunrise Smoothie",
       description: "Exotic blend of mango, banana, and passion fruit",
@@ -187,7 +174,6 @@ class Restaurant {
         Addon(name: "Coconut Flakes", price: 0.50),
       ]
     ),
-
 
 //////////////////////// // Bubble Tea
     Food(
@@ -201,7 +187,6 @@ class Restaurant {
         Addon(name: "Grass Jelly", price: 0.50),
       ]
     ),
-
     Food(
       name: "Honeydew Bubble Tea",
       description: "Refreshing honeydew-flavored milk tea with tapioca pearls",
@@ -213,7 +198,6 @@ class Restaurant {
         Addon(name: "Lychee Jelly", price: 0.50),
       ]
     ),
-
     Food(
       name: "Strawberry Bubble Tea",
       description: "Sweet strawberry milk tea with chewy tapioca pearls",
@@ -225,7 +209,6 @@ class Restaurant {
         Addon(name: "Peach Popping Boba", price: 0.75),
       ]
     ),
-
     Food(
       name: "Coconut Bubble Tea",
       description: "Creamy coconut milk tea with tapioca pearls",
@@ -237,7 +220,6 @@ class Restaurant {
         Addon(name: "Jasmine Jelly", price: 0.50),
       ]
     ),
-
     Food(
       name: "Mango Bubble Tea",
       description: "Tropical mango-flavored milk tea with chewy tapioca pearls",
@@ -249,7 +231,6 @@ class Restaurant {
         Addon(name: "Coconut Jelly", price: 0.50),
       ]
     ),
-
 
 ////////////////// Other Drinks
     Food(
@@ -263,7 +244,6 @@ class Restaurant {
         Addon(name: "Cinnamon Powder", price: 0.75),
       ]
     ),
-
     Food(
       name: "Horchata",
       description: "Traditional Mexican rice milk drink with cinnamon",
@@ -275,7 +255,6 @@ class Restaurant {
         Addon(name: "Whipped Cream", price: 0.75),
       ]
     ),
-
     Food(
       name: "Lemonade Iced Tea",
       description: "Refreshing blend of iced tea and lemonade",
@@ -287,7 +266,6 @@ class Restaurant {
         Addon(name: "Raspberry Syrup", price: 0.75),
       ]
     ),
-
     Food(
       name: "Spiced Hot Chocolate",
       description: "Rich hot chocolate with a blend of spices",
@@ -299,7 +277,6 @@ class Restaurant {
         Addon(name: "Peppermint Syrup", price: 0.75),
       ]
     ),
-
     Food(
       name: "Vanilla Bean Frappuccino",
       description: "Creamy frappuccino with vanilla bean flavor",
@@ -315,6 +292,33 @@ class Restaurant {
   ];
 
 
+  /* 
   
+  G E T T E R S
+  
+  */
+
+  List<Food> get menu => _menu;
+  
+  
+  /* 
+  
+  O P ERATIONS
+  
+  */
+
+  // add to cart
+  //remove from cart
+  // get total price of cart
+  // get total number of item in cart
+  //clear carr
+
+
+
+  /* 
+  
+  H E L P E R S
+  
+  */
 
 }

@@ -1,8 +1,11 @@
+import 'package:brew_dash_app/models/food.dart';
+import 'package:brew_dash_app/models/restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:brew_dash_app/components/my_current_location.dart';
 import 'package:brew_dash_app/components/my_description_box.dart';
 import 'package:brew_dash_app/components/my_drawer.dart';
 import 'package:brew_dash_app/components/my_tab_bar.dart';
+import 'package:provider/provider.dart';
 import '../components/my_sliver_app_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +23,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: FoodCategory.values.length, vsync: this);
   }
 
   @override
@@ -29,6 +32,28 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
+
+  List<Food> _filterMenuByCategory(FoodCategory category, List<Food> fullMenu) {
+    return fullMenu.where((food) => food.category == category).toList();
+  }
+
+
+  // return list of foods in given category
+  List<Widget> getFoodinThisCategory(List<Food> fullMenu) {
+    return FoodCategory.values.map((category) {
+      List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
+
+      return ListView.builder(
+        itemCount: categoryMenu.length,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(categoryMenu[index].name),
+          );
+        },
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,24 +82,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ),
           ), 
         ],
-        body: TabBarView(
+        body: Consumer<Restaurant>(builder: (context, restaurant, child) => TabBarView(
           controller: _tabController,
-          children: [
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text("first tab items"),
-              ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text("second tab items"),
-              ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text("third tab items"),
-              ),
-          ],
+          children: getFoodinThisCategory(restaurant.menu),
+          ),
         ),
       ),
-    ); 
+    );
   }
 }
