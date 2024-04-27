@@ -1,4 +1,5 @@
 import 'package:brew_dash_app/components/my_button.dart';
+import 'package:brew_dash_app/pages/delivery_progress_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
@@ -40,19 +41,23 @@ class _PaymentPageState extends State<PaymentPage> {
             // cancel button
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text("Yes"),
+              child: const Text("Cancel"),
               ),
 
-            // Yes btn
-            // TextButton(
-            //   onPressed: () => Navigator.push(
-            //     context, 
-            //     MaterialPageRoute(
-            //       builder: (context) => DeliveryProgressPage(),
-            //   ), 
-            // ),
-            // child: const Text("Yes"),
-            // ),
+            //Yes btn
+            // Yes button
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DeliveryProgressPage(),
+                  ),
+                );
+              },
+              child: const Text("Yes"),
+            ),
+
           ],
         ), 
       );
