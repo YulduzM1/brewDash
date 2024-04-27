@@ -60,9 +60,42 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    # Coffee Images
+    - lib/images/coffee/cappuccino.png
+    - lib/images/coffee/latte.png
+    - lib/images/coffee/mocha.png
+    - lib/images/coffee/americano.png
+    - lib/images/coffee/macchiato.png
+
+    # Tea Images
+    - lib/images/teas/chai_tea.png
+    - lib/images/teas/earl_grey_tea.png
+    - lib/images/teas/peppermint_tea.png
+    - lib/images/teas/jasmine_tea.png
+    - lib/images/teas/rooibos_tea.png
+
+    # Smoothie Images
+    - lib/images/smoothies/mango_smoothie.png
+    - lib/images/smoothies/green_smoothie.png
+    - lib/images/smoothies/peach_smoothie.png
+    - lib/images/smoothies/berry_burst_smoothie.png
+    - lib/images/smoothies/tropical_smoothie.png
+
+    # Bubble Tea Images
+    - lib/images/bubbleteas/matcha_bubble_tea.png
+    - lib/images/bubbleteas/honeydew_bubble_tea.png
+    - lib/images/bubbleteas/strawberry_bubble_tea.png
+    - lib/images/bubbleteas/coconut_bubble_tea.png
+    - lib/images/bubbleteas/mango_bubble_tea.png
+
+    # Other Drinks Images
+    - lib/images/specials/turmeric_milk.png
+    - lib/images/specials/horchata.png
+    - lib/images/specials/lemonade_iced_tea.png
+    - lib/images/specials/spiced_hot_chocolate.png
+    - lib/images/specials/vanilla_frappuccino.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
