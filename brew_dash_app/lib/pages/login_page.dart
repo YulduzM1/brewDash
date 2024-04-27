@@ -1,7 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:brew_dash_app/components/my_button.dart';
 import 'package:brew_dash_app/components/my_textfield.dart';
+import 'package:brew_dash_app/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -19,17 +21,38 @@ class _LoginPageState extends State<LoginPage> {
 
 
   //login method
-  void login() {
+  void login() async{ 
 
+    //get instance of auth service
+    final _authService = AuthService();
 
+    //try signIn
+    try {
+      await _authService.signInWithEmailPassword(
+        emailController.text,
+        passwordController.text
+      );
+    }
 
+    //display any errors
+    catch (e) {
+      showDialog(
+        context: context, 
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
+  }
 
-  // navigate to home page
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ), // MaterialPageRoute
+  // forgot password
+  void forgotPw() {
+    showDialog(
+      context: context, 
+      builder: (context) => AlertDialog(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        title: const Text("User tapped forgot Password."),
+      ),
     );
   }
 

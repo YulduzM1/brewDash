@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:brew_dash_app/components/my_button.dart';
 import 'package:brew_dash_app/components/my_textfield.dart';
+import 'package:brew_dash_app/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -18,7 +21,41 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
-  
+  //register method
+  void register() async {
+    //get auth service
+    final _authService = AuthService();
+
+    // check if passwords mathc -> create user
+    if (passwordController.text == confirmPasswordController.text) {
+      //try create user
+      try {
+        await _authService.signUpWithEmailPassword(
+          emailController.text,
+          passwordController.text,
+        );
+      }
+      //display error
+      catch (e) {
+        showDialog(
+          context: context, 
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
+      }
+    }
+
+    //if passwords dont match 
+    else {
+      showDialog(
+        context: context, 
+        builder: (context) => const AlertDialog(
+          title: Text("Passwords don't match"),
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
