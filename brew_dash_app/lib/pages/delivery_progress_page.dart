@@ -1,14 +1,36 @@
 import 'package:brew_dash_app/components/my_receipt.dart';
+import 'package:brew_dash_app/models/restaurant.dart';
+import 'package:brew_dash_app/services/database/firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class DeliveryProgressPage extends StatelessWidget {
+class DeliveryProgressPage extends StatefulWidget {
   const DeliveryProgressPage({Key? key}) : super(key: key);
+
+  @override
+  State<DeliveryProgressPage> createState() => _DeliveryProgressPageState();
+}
+
+class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
+  //get access to db
+  FirestoreService db = FirestoreService();
+  
+
+  @override
+  void initState() {
+    super.initState();
+
+    // if we get to this page, submti
+    String receipt = context.read<Restaurant>().displayCartReceipt();
+    db.saveOrderToDatabase(receipt);
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Delivery in progress..."),
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
@@ -19,8 +41,7 @@ class DeliveryProgressPage extends StatelessWidget {
     );
   }
 
-
-  //Custom Bottom Nav Bar - Message/ cal delivery driver
+  //Custom Bottom Nav Bar - Message/ cal del ivery driver
   Widget _buildBottomNavBar(BuildContext context) {
     return Container(
       height: 100,
