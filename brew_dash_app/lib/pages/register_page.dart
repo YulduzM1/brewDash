@@ -8,25 +8,24 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
 
-  const RegisterPage({
-  super.key, 
-  required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
-
+  // text Editing Controllers
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+ 
   //register method
   void register() async {
     //get auth service
     final _authService = AuthService();
 
-    // check if passwords mathc -> create user
+    // check if passwords ma  thc -> create user
     if (passwordController.text == confirmPasswordController.text) {
       //try create user
       try {
@@ -55,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       );
     }
-  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
           MyButton(
           text: "Sign Up",
-          onTap: () {},
+          onTap: register,
            ),
 
           const SizedBox(height: 25),

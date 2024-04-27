@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:brew_dash_app/components/my_receipt.dart';
 import 'package:flutter/material.dart';
 

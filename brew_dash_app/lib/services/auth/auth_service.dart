@@ -37,14 +37,13 @@ class AuthService {
         email: email, 
         password: password,
       );
+
       return userCredential;
     }
     //catch any errors
     on FirebaseAuthException catch (e) {
       throw Exception(e.code);
     }
-
-
   }
 
   //sign out
