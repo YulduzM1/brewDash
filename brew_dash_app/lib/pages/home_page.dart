@@ -8,6 +8,7 @@ import 'package:brew_dash_app/components/my_drawer.dart';
 import 'package:brew_dash_app/components/my_tab_bar.dart';
 import 'package:provider/provider.dart';
 import '../components/my_sliver_app_bar.dart';
+import 'food_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +16,6 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-
 class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
 
   // tab Controller
@@ -33,11 +33,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
-
   List<Food> _filterMenuByCategory(FoodCategory category, List<Food> fullMenu) {
     return fullMenu.where((food) => food.category == category).toList();
   }
-
 
   // return list of foods in given category
   List<Widget> getFoodinThisCategory(List<Food> fullMenu) {
@@ -52,13 +50,19 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         itemBuilder: (context, index) {
           //get individual food
           final food = categoryMenu[index];
+          // return food tile UI
           return FoodTile(
-            food: food, 
-            onTap: () {},
-          );
-        },
-      );
-    }).toList();
+            food: food,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FoodPage(food: food),
+              ), 
+            ),
+          ); 
+        }, 
+      ); 
+    }).toList(); 
   }
 
   @override
@@ -80,7 +84,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 ),
                 
                 // switch
-                MyCurrentLocation(),
+                const MyCurrentLocation(),
 
                 //description
                 const MyDescriptionBox(),

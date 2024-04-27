@@ -1,6 +1,5 @@
 import 'package:brew_dash_app/models/food.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class FoodTile extends StatelessWidget {
   final Food food;
@@ -29,7 +28,7 @@ class FoodTile extends StatelessWidget {
                     children: [
                       Text(food.name),
                       Text(
-                        '\$' + food.price.toString(),
+                        '\$${food.price}',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary
                         ),

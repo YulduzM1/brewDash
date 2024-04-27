@@ -1,5 +1,4 @@
 import 'package:brew_dash_app/models/food.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class MyTabBar extends StatelessWidget {
